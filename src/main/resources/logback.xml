@@ -7,10 +7,10 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${MY_HOME}logback.log</File>
+        <File>logback/logback.log</File>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <fileNamePattern>${MY_HOME}log_base/logback.%i.zip</fileNamePattern>
+            <fileNamePattern>logback/log_base/logback.%i.zip</fileNamePattern>
             <minIndex>1</minIndex>
             <maxIndex>5</maxIndex>
         </rollingPolicy>
