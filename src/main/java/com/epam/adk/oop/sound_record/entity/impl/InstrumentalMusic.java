@@ -9,11 +9,11 @@ import com.epam.adk.oop.sound_record.entity.enums.MusicInstrument;
  *
  * @author Kaikenov Adilhan.
  */
-public class InstrimentalMusic extends Track {
+public class InstrumentalMusic extends Track {
 
     private MusicInstrument[] instruments;
 
-    public InstrimentalMusic(String title, int duration, Genre genre, MusicInstrument[] instruments) {
+    public InstrumentalMusic(String title, int duration, Genre genre, MusicInstrument[] instruments) {
         super(title, duration, genre);
         this.instruments = instruments;
     }

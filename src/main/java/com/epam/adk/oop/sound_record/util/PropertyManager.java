@@ -48,6 +48,4 @@ public class PropertyManager {
     public String getProperty(String key) {
         return properties.getProperty(key);
     }
-
-
 }
