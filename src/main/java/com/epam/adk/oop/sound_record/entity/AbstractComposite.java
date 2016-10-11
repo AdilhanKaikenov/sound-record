@@ -23,8 +23,8 @@ public abstract class AbstractComposite<T extends Component> {
         musicUnits = new ArrayList<>();
     }
 
-    public void add(T composite){
-        if (composite == null){
+    public void add(T composite) {
+        if (composite == null) {
             log.error("Error in {} class, add() method. Argument = null", super.getClass().getSimpleName());
             throw new NullPointerException();
         }
@@ -32,11 +32,11 @@ public abstract class AbstractComposite<T extends Component> {
     }
 
     public void addAll(T... components) {
+        if (components == null) {
+            log.error("Error in {} class, addAll() method. Argument = null", super.getClass().getSimpleName());
+            throw new NullPointerException();
+        }
         for (T component : components) {
-            if (component == null) {
-                log.error("Error in {} class, addAll() method. Argument = null", super.getClass().getSimpleName());
-                throw new NullPointerException();
-            }
             this.getMusicUnits().add(component);
         }
     }
@@ -59,7 +59,7 @@ public abstract class AbstractComposite<T extends Component> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Component component : musicUnits){
+        for (Component component : musicUnits) {
             if (component != null) {
                 sb.append(component).append("\n");
             }

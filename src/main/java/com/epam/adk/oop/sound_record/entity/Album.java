@@ -29,7 +29,7 @@ public class Album implements Component {
     public String getPerformers() {
         StringBuilder sb = new StringBuilder();
         for (Performer performer : performers) {
-            sb.append(performer).append(", ");
+            sb.append(performer).append("; ");
         }
         return sb.toString();
     }
@@ -42,13 +42,7 @@ public class Album implements Component {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("\t\t").append("ALBUM: ").append("\n").append("Performers: ");
-        for (Performer performer : performers){
-            sb.append(performer);
-            if (performers.length > 1){
-                sb.append("; ");
-            }
-        }
-        sb.append(playlist);
+        sb.append(getPerformers()).append(playlist);
         return sb.toString();
     }
 }

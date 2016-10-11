@@ -27,7 +27,7 @@ public class PropertyManager {
     }
 
     private PropertyManager() {
-        log.debug("In constructor SongPropertyManager().");
+        log.debug("In constructor PropertyManager().");
         properties = new Properties();
         ClassLoader classLoader = PropertyManager.class.getClassLoader();
         try (InputStream in = classLoader.getResourceAsStream(PROPERTY_FILE_NAME)) {

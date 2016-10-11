@@ -19,9 +19,7 @@ public class Playlist extends AbstractComposite<Track> {
             log.error("In Playlist class, printTracks() method. Argument = null");
             throw new NullPointerException();
         }
-
         log.debug("In Playlist class, printTracks() method. Argument size = {}", tracks.size());
-
         for (Track track : tracks) {
             log.info(track.toString());
         }

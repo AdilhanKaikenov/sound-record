@@ -17,14 +17,29 @@ public class Disk extends AbstractComposite<Album> {
     private static final Logger log = LoggerFactory.getLogger(Disk.class);
     private static final String SING_TO_SPLIT_TIME = ":";
 
-    public void sortByGenre(){
-        for (Album album : getMusicUnits()){
+    /**
+     * The method for sorting tracks in albums of disk by genre.
+     */
+    public void sortByGenre() {
+        for (Album album : getMusicUnits()) {
             List<Track> musicUnits = album.getPlaylist().getMusicUnits();
             Collections.sort(musicUnits);
         }
     }
 
-    public List<Track> searchTrack(int minMinute, int maxMinute){
+    /**
+     * The method to search for all tracks in the range of minutes.
+     *
+     * @param minMinute the lower bound (minute) for the search.
+     * @param maxMinute the upper bound (minute) for the search.
+     * @return a list of the found songs.
+     */
+    public List<Track> searchTrack(int minMinute, int maxMinute) {
+        log.debug("Min. minute = {}, Max. minute = {}", minMinute, maxMinute);
+        if (minMinute > maxMinute) {
+            log.error("Error in Disk class, searchTrack() method. Min. minute must not be less than Max. minute.");
+            throw new IllegalArgumentException();
+        }
         List<Track> result = new ArrayList<>();
         List<Album> musicUnits = getMusicUnits();
         if (musicUnits == null) {
@@ -50,4 +65,8 @@ public class Disk extends AbstractComposite<Album> {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Total duration = " + getDuration() + " minutes. \n" + super.toString();
+    }
 }
