@@ -1,4 +1,4 @@
-package com.epam.adk.oop.sound_record.entity.impl;
+package com.epam.adk.oop.sound_record.entity;
 
 import com.epam.adk.oop.sound_record.entity.Track;
 import com.epam.adk.oop.sound_record.entity.enums.Genre;

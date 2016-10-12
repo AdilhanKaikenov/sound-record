@@ -1,11 +1,10 @@
 package com.epam.adk.oop.sound_record.factory;
 
-import com.epam.adk.oop.sound_record.entity.Component;
 import com.epam.adk.oop.sound_record.entity.Track;
 import com.epam.adk.oop.sound_record.entity.enums.Genre;
 import com.epam.adk.oop.sound_record.entity.enums.MusicInstrument;
-import com.epam.adk.oop.sound_record.entity.impl.InstrumentalMusic;
-import com.epam.adk.oop.sound_record.entity.impl.Song;
+import com.epam.adk.oop.sound_record.entity.InstrumentalMusic;
+import com.epam.adk.oop.sound_record.entity.Song;
 import com.epam.adk.oop.sound_record.util.PropertyManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
