@@ -12,16 +12,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Created by Kaikenov Adilhan on 11.10.2016.
+ * Created by Kaikenov Adilhan on 12.10.2016.
  *
  * @author Kaikenov Adilhan.
  */
 public class AlbumFactory {
+
     private static final Logger log = LoggerFactory.getLogger(AlbumFactory.class);
 
     private static Random random = new Random();
-    private static final int MAX_SONGS_NUMBER = 7;
-    private static final int MAX_INSTRUMENTAL_MUSICS_NUMBER = 7;
+
+    private static final int MAX_TRACK_NUMBER = 7;
     private static final int MAX_PERFORMERS_NUMBER = 2;
     private static final int MIN_NUMBER = 1;
 
@@ -33,16 +34,15 @@ public class AlbumFactory {
     public static Album createAlbum() {
         ArrayList<Track> tracks = new ArrayList<>();
         ArrayList<Performer> performers = new ArrayList<>();
-        int songsNum = random.nextInt(MAX_SONGS_NUMBER - MIN_NUMBER) + MIN_NUMBER;
-        int instrMusicsNum = random.nextInt(MAX_INSTRUMENTAL_MUSICS_NUMBER - MIN_NUMBER) + MIN_NUMBER;
+        int trackNum = random.nextInt(MAX_TRACK_NUMBER - MIN_NUMBER) + MIN_NUMBER;
         int performersNum = random.nextInt(MAX_PERFORMERS_NUMBER - MIN_NUMBER) + MIN_NUMBER;
         log.debug("Entering createAlbum(Number: songs = {}, instr.musics = {}, performers = {})",
-                songsNum, instrMusicsNum, performersNum);
+                trackNum, trackNum, performersNum);
         for (int i = 0; i < performersNum; i++){
             performers.add(new Performer("SingerName", "SingerLastName_" + i));
         }
-        ArrayList<Track> songs = SongFactory.createSongs(songsNum);
-        ArrayList<Track> instrumentalMusics = SongFactory.createInstrumentalMusics(instrMusicsNum);
+        ArrayList<Track> songs = SongFactory.createSongs(trackNum);
+        ArrayList<Track> instrumentalMusics = SongFactory.createInstrumentalMusics(trackNum);
         tracks.addAll(songs);
         tracks.addAll(instrumentalMusics);
         log.debug("Creating Album. Parameters: performers number = {}, tracks number = {}", performers.size(), tracks.size());
@@ -57,7 +57,6 @@ public class AlbumFactory {
     private static class SongFactory {
 
         private static final Logger log = LoggerFactory.getLogger(SongFactory.class);
-
 
         private static String genreValues = PropertyManager.getInstance().getProperty("genres");
         private static String instrumentValues = PropertyManager.getInstance().getProperty("music.instruments");

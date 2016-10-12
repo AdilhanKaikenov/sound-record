@@ -56,9 +56,7 @@ public class Album extends AbstractComposite<Track> implements Component {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\t\t").append("ALBUM: ").append("\n").append("Performers: ");
-        sb.append(getPerformers()).append("\n").append(super.toString());
-        return sb.toString();
+        return "\t\t" + "ALBUM: " + "\n" + "Performers: " +
+                getPerformers() + "\n" + super.toString();
     }
 }

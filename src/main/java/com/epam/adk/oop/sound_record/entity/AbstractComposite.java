@@ -35,16 +35,6 @@ public abstract class AbstractComposite<T extends Component> {
         components.add(composite);
     }
 
-    public void add(ArrayList<T> components) {
-        if (components == null) {
-            log.error("Error in {} class, add() method. Argument = null", super.getClass().getSimpleName());
-            throw new NullPointerException();
-        }
-        for (T component : components) {
-            this.getComponents().add(component);
-        }
-    }
-
     public List<T> getComponents() {
         return components;
     }

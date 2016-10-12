@@ -27,6 +27,10 @@ public abstract class Track implements Component {
         return sdf.format(new Date(duration * 1000));
     }
 
+    public Genre getGenre() {
+        return genre;
+    }
+
     @Override
     public String toString() {
         return " - Song name: " + title +
@@ -34,9 +38,6 @@ public abstract class Track implements Component {
                 "; Duration: " + getDuration() + ";";
     }
 
-    public Genre getGenre() {
-        return genre;
-    }
 
     /**
      * Created by Kaikenov Adilhan on 11.10.2016.
