@@ -1,7 +1,5 @@
 package com.epam.adk.oop.sound_record.entity;
 
-import com.epam.adk.oop.sound_record.entity.enums.Genre;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -11,7 +9,7 @@ import java.util.Date;
  * @author Kaikenov Adilhan.
  * @see Component
  */
-public abstract class Track implements Component, Comparable<Track> {
+public abstract class Track implements Component {
 
     private String title;
     private int duration;
@@ -21,11 +19,6 @@ public abstract class Track implements Component, Comparable<Track> {
         this.title = title;
         this.duration = duration;
         this.genre = genre;
-    }
-
-    @Override
-    public int compareTo(Track track) {
-        return genre.compareTo(track.getGenre());
     }
 
     @Override
@@ -45,4 +38,28 @@ public abstract class Track implements Component, Comparable<Track> {
         return genre;
     }
 
+    /**
+     * Created by Kaikenov Adilhan on 11.10.2016.
+     * Enumeration of Music genres.
+     *
+     * @author Kaikenov Adilhan.
+     */
+    public enum Genre {
+
+        ALTERNATIVE("Alternative"),
+        CLASSICAL("Classical"),
+        JAZZ("Jazz"),
+        POP("Pop"),
+        SOUNDTRACK("Soundtrack");
+
+        private String name;
+
+        Genre(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
 }

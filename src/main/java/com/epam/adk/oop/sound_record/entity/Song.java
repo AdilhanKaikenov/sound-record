@@ -1,8 +1,5 @@
 package com.epam.adk.oop.sound_record.entity;
 
-import com.epam.adk.oop.sound_record.entity.Track;
-import com.epam.adk.oop.sound_record.entity.enums.Genre;
-
 /**
  * Created by Kaikenov Adilhan on 11.10.2016.
  *

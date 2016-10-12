@@ -1,4 +1,4 @@
-package com.epam.adk.oop.sound_record.util;
+package com.epam.adk.oop.sound_record.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

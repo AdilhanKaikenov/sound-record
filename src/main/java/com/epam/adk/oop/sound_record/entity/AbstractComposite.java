@@ -17,10 +17,14 @@ public abstract class AbstractComposite<T extends Component> {
 
     private static final Logger log = LoggerFactory.getLogger(AbstractComposite.class);
 
-    private List<T> musicUnits;
+    private List<T> components;
 
     public AbstractComposite() {
-        musicUnits = new ArrayList<>();
+        components = new ArrayList<>();
+    }
+
+    public AbstractComposite(List<T> components) {
+        this.components = components;
     }
 
     public void add(T composite) {
@@ -28,26 +32,26 @@ public abstract class AbstractComposite<T extends Component> {
             log.error("Error in {} class, add() method. Argument = null", super.getClass().getSimpleName());
             throw new NullPointerException();
         }
-        musicUnits.add(composite);
+        components.add(composite);
     }
 
-    public void addAll(T... components) {
+    public void add(ArrayList<T> components) {
         if (components == null) {
-            log.error("Error in {} class, addAll() method. Argument = null", super.getClass().getSimpleName());
+            log.error("Error in {} class, add() method. Argument = null", super.getClass().getSimpleName());
             throw new NullPointerException();
         }
         for (T component : components) {
-            this.getMusicUnits().add(component);
+            this.getComponents().add(component);
         }
     }
 
-    public List<T> getMusicUnits() {
-        return musicUnits;
+    public List<T> getComponents() {
+        return components;
     }
 
     public String getDuration() {
         int total = 0;
-        for (Component component : getMusicUnits()) {
+        for (Component component : getComponents()) {
             String duration = component.getDuration();
             String[] split = duration.split(":");
             total += Integer.valueOf(split[0]) * 60 + Integer.valueOf(split[1]);
@@ -59,7 +63,7 @@ public abstract class AbstractComposite<T extends Component> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Component component : musicUnits) {
+        for (Component component : components) {
             if (component != null) {
                 sb.append(component).append("\n");
             }

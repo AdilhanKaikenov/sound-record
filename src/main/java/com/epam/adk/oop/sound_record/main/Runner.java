@@ -1,11 +1,15 @@
 package com.epam.adk.oop.sound_record.main;
 
-import com.epam.adk.oop.sound_record.entity.*;
-import com.epam.adk.oop.sound_record.factory.SongFactory;
+import com.epam.adk.oop.sound_record.entity.Album;
+import com.epam.adk.oop.sound_record.entity.Disk;
+import com.epam.adk.oop.sound_record.entity.Track;
+import com.epam.adk.oop.sound_record.factory.AlbumFactory;
+import com.epam.adk.oop.sound_record.service.FinderTracksByDuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Kaikenov Adilhan on 11.10.2016.
@@ -24,29 +28,21 @@ public class Runner {
      * @param args input arguments array.
      */
     public static void main(String[] args) {
-        log.info("<----------------------------------- MAIN METHOD START ----------------------------------->");
+
         Disk disk = new Disk();
-        Performer singer = new Performer("Liza", "Soberano");
+        FinderTracksByDuration finder = new FinderTracksByDuration();
 
-        // Creating tracks.
-        SongFactory factory = new SongFactory();
-        Track[] songs = factory.createSongs(5);
-        Track[] instrumentalMusics = factory.createInstrumentalMusics(3);
-
-        Playlist playlist = new Playlist();
-        playlist.addAll(songs);
-        playlist.addAll(instrumentalMusics);
-
-        Album album = new Album(new Performer[]{singer}, playlist);
+        Album album = AlbumFactory.createAlbum();
 
         disk.add(album);
-        disk.sortByGenre(); // sorting
-        log.info("{}", disk);
+
+        Collections.sort(album.getComponents(), Album.BY_TRACK_GENRE);
+
+        log.info("Sorted disk: {}", disk);
 
         log.info("Search result: ");
-        List<Track> tracks = disk.searchTrack(3, 3);
-        Playlist.printTracks(tracks);
-        log.info("<----------------------------------- MAIN METHOD END ----------------------------------->\n\n");
+        ArrayList<Track> found = finder.find(3, 3, disk);
+        Album.printTracks(found);
 
     }
 }
