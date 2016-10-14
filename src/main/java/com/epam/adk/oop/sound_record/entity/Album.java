@@ -1,6 +1,5 @@
 package com.epam.adk.oop.sound_record.entity;
 
-import com.epam.adk.oop.sound_record.service.SorterByTrackGenre;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,5 +57,24 @@ public class Album extends AbstractComposite<Track> implements Component {
     public String toString() {
         return "\t\t" + "ALBUM: " + "\n" + "Performers: " +
                 getPerformers() + "\n" + super.toString();
+    }
+
+    /**
+     * Created by Kaikenov Adilhan on 12.10.2016.
+     * A Comparator that sorts {@code Track} objects as by Genre.
+     *
+     * @author Kaikenov Adilhan.
+     * @see Comparator
+     */
+    private static class SorterByTrackGenre implements Comparator<Track> {
+
+        @Override
+        public int compare(Track track1, Track track2) {
+
+            String genre1 = String.valueOf(track1.getGenre());
+            String genre2 = String.valueOf(track2.getGenre());
+
+            return genre1.compareTo(genre2);
+        }
     }
 }
