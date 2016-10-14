@@ -21,22 +21,19 @@ public class Song extends Track {
     public Song() {
     }
 
-    public String getTextAuthor() {
-        return textAuthor;
-    }
-
     public void setTextAuthor(String textAuthor) {
         this.textAuthor = textAuthor;
     }
 
     /**
-     *
+     * Song Builder inner class.
      */
     public static class SongBuilder {
 
         private Song song;
         private Random random = new Random();
-        private String genreValues = PropertyManager.getInstance().getProperty("genres");
+        private static String genreValues = PropertyManager.getInstance().getProperty("genres");
+        private static final String SIGN_TO_SPLIT = ",";
 
         private void createSong(){
             song = new Song();
@@ -51,7 +48,7 @@ public class Song extends Track {
         }
 
         void buildGenre(){
-            String[] genres = genreValues.split(",");
+            String[] genres = genreValues.split(SIGN_TO_SPLIT);
             int index = random.nextInt(genres.length);
             song.setGenre(Track.Genre.valueOf(genres[index]));
         }

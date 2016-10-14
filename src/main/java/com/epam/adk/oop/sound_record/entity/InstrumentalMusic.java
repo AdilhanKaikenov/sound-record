@@ -22,10 +22,6 @@ public class InstrumentalMusic extends Track {
     public InstrumentalMusic() {
     }
 
-    public ArrayList<MusicInstrument> getInstruments() {
-        return instruments;
-    }
-
     public void setInstruments(ArrayList<MusicInstrument> instruments) {
         this.instruments = instruments;
     }
@@ -48,22 +44,18 @@ public class InstrumentalMusic extends Track {
         MusicInstrument(String name) {
             this.name = name;
         }
-
-        public String getName() {
-            return name;
-        }
-
     }
 
     /**
-     *
+     * InstrumentalMusic Builder inner class.
      */
     public static class InstrumentalMusicBuilder {
 
         private InstrumentalMusic music;
         private Random random = new Random();
-        private String genreValues = PropertyManager.getInstance().getProperty("genres");
-        private String instrumentValues = PropertyManager.getInstance().getProperty("music.instruments");
+        private static String genreValues = PropertyManager.getInstance().getProperty("genres");
+        private static String instrumentValues = PropertyManager.getInstance().getProperty("music.instruments");
+        private static final String SIGN_TO_SPLIT = ",";
 
         private void createInstrumentalMusic(){
             music = new InstrumentalMusic();
@@ -79,13 +71,13 @@ public class InstrumentalMusic extends Track {
         }
 
         void buildGenre(){
-            String[] genres = genreValues.split(",");
+            String[] genres = genreValues.split(SIGN_TO_SPLIT);
             int index = random.nextInt(genres.length);
             music.setGenre(Track.Genre.valueOf(genres[index]));
         }
 
         private void buildMusicInstruments(){
-            String[] instruments = instrumentValues.split(",");
+            String[] instruments = instrumentValues.split(SIGN_TO_SPLIT);
             int number = random.nextInt(7);
             if (number == 0) {
                 number++;

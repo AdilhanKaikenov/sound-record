@@ -3,7 +3,7 @@ package com.epam.adk.oop.sound_record.main;
 import com.epam.adk.oop.sound_record.entity.Album;
 import com.epam.adk.oop.sound_record.entity.Disk;
 import com.epam.adk.oop.sound_record.entity.Track;
-import com.epam.adk.oop.sound_record.factory.AlbumFactory;
+import com.epam.adk.oop.sound_record.builder.AlbumBuilder;
 import com.epam.adk.oop.sound_record.service.FinderTracksByDuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +32,7 @@ public class Runner {
         Disk disk = new Disk();
         FinderTracksByDuration finder = new FinderTracksByDuration();
 
-        Album album = AlbumFactory.createAlbum();
+        Album album = AlbumBuilder.buildAlbum();
 
         disk.add(album);
 

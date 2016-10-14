@@ -41,10 +41,6 @@ public abstract class Track implements Component {
                 "; Duration: " + getDuration() + ";";
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
