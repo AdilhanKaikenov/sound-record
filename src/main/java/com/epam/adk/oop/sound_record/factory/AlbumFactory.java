@@ -1,17 +1,15 @@
 package com.epam.adk.oop.sound_record.factory;
 
 import com.epam.adk.oop.sound_record.entity.*;
-import com.epam.adk.oop.sound_record.service.PropertyManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static com.epam.adk.oop.sound_record.entity.InstrumentalMusic.MusicInstrument;
-import static com.epam.adk.oop.sound_record.entity.Track.Genre;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
+ * TODO: Использовать паттерн Builder, придумать как сделать лучше.
+ *
  * Created by Kaikenov Adilhan on 12.10.2016.
  *
  * @author Kaikenov Adilhan.
@@ -58,12 +56,6 @@ public class AlbumFactory {
 
         private static final Logger log = LoggerFactory.getLogger(SongFactory.class);
 
-        private static String genreValues = PropertyManager.getInstance().getProperty("genres");
-        private static String instrumentValues = PropertyManager.getInstance().getProperty("music.instruments");
-
-        private static final int MAX_NUMBER_OF_INSTRUMENTS = 5;
-        private static final String SIGN_TO_SPLIT = ",";
-
         /**
          * The method for creating Songs.
          *
@@ -72,13 +64,10 @@ public class AlbumFactory {
          */
         public static ArrayList<Track> createSongs(int number) {
             log.debug("Entering createSongs(number = {})", number);
+            Song.SongBuilder builder = new Song.SongBuilder();
             ArrayList<Track> songs = new ArrayList<>(number);
             for (int i = 0; i < number; i++) {
-                String title = "Song nameless_" + i;
-                int duration = generateDuration();
-                Genre genre = generateGenre();
-                log.debug("Creating song. Parameters: {}, {}, {}", title, duration, genre);
-                songs.add(new Song(title, duration, genre, "Unknown"));
+                songs.add(builder.buildSong());
             }
             return songs;
         }
@@ -90,42 +79,13 @@ public class AlbumFactory {
          * @return the number of instrumental music randomly created.
          */
         public static ArrayList<Track> createInstrumentalMusics(int number) {
+            InstrumentalMusic.InstrumentalMusicBuilder builder = new InstrumentalMusic.InstrumentalMusicBuilder();
             log.debug("Entering createInstrumentalMusics(number = {})", number);
             ArrayList<Track> instrumentalMusics = new ArrayList<>(number);
             for (int i = 0; i < number; i++) {
-                String title = "Music nameless_" + i;
-                int duration = generateDuration();
-                Genre genre = generateGenre();
-                ArrayList<MusicInstrument> musicInstruments = generateInstruments();
-                log.debug("Creating instrumental music. Parameters: {}, {}, {}, instruments number = {}",
-                        title, duration, genre, musicInstruments);
-                instrumentalMusics.add(new InstrumentalMusic(title, duration, genre, musicInstruments));
+                instrumentalMusics.add(builder.buildInstrumentalMusic());
             }
             return instrumentalMusics;
-        }
-
-        private static int generateDuration() {
-            return random.nextInt(180) + 120;
-        }
-
-        private static Genre generateGenre() {
-            String[] genres = genreValues.split(SIGN_TO_SPLIT);
-            int index = random.nextInt(genres.length);
-            return Genre.valueOf(genres[index]);
-        }
-
-        private static ArrayList<MusicInstrument> generateInstruments() {
-            String[] instruments = instrumentValues.split(SIGN_TO_SPLIT);
-            int number = random.nextInt(MAX_NUMBER_OF_INSTRUMENTS);
-            if (number == 0) {
-                number++;
-            }
-            ArrayList<MusicInstrument> musicInstruments = new ArrayList<>(number);
-            for (int i = 0; i < number; i++) {
-                int index = random.nextInt(instruments.length);
-                musicInstruments.add(MusicInstrument.valueOf(instruments[index]));
-            }
-            return musicInstruments;
         }
     }
 }

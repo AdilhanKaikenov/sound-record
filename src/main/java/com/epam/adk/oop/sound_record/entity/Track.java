@@ -21,6 +21,9 @@ public abstract class Track implements Component {
         this.genre = genre;
     }
 
+    public Track() {
+    }
+
     @Override
     public String getDuration() {
         SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
@@ -38,6 +41,21 @@ public abstract class Track implements Component {
                 "; Duration: " + getDuration() + ";";
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
 
     /**
      * Created by Kaikenov Adilhan on 11.10.2016.
