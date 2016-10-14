@@ -3,6 +3,8 @@ package com.epam.adk.oop.sound_record.factory;
 import com.epam.adk.oop.sound_record.entity.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import static com.epam.adk.oop.sound_record.entity.InstrumentalMusic.InstrumentalMusicBuilder;
+import static com.epam.adk.oop.sound_record.entity.Song.SongBuilder;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -64,7 +66,7 @@ public class AlbumFactory {
          */
         public static ArrayList<Track> createSongs(int number) {
             log.debug("Entering createSongs(number = {})", number);
-            Song.SongBuilder builder = new Song.SongBuilder();
+            SongBuilder builder = new SongBuilder();
             ArrayList<Track> songs = new ArrayList<>(number);
             for (int i = 0; i < number; i++) {
                 songs.add(builder.buildSong());
@@ -79,7 +81,7 @@ public class AlbumFactory {
          * @return the number of instrumental music randomly created.
          */
         public static ArrayList<Track> createInstrumentalMusics(int number) {
-            InstrumentalMusic.InstrumentalMusicBuilder builder = new InstrumentalMusic.InstrumentalMusicBuilder();
+            InstrumentalMusicBuilder builder = new InstrumentalMusicBuilder();
             log.debug("Entering createInstrumentalMusics(number = {})", number);
             ArrayList<Track> instrumentalMusics = new ArrayList<>(number);
             for (int i = 0; i < number; i++) {

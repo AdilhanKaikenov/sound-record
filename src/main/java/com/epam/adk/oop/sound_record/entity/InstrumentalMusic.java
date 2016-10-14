@@ -98,17 +98,13 @@ public class InstrumentalMusic extends Track {
             music.setInstruments(musicInstruments);
         }
 
-        private InstrumentalMusic getInstrumentalMusic() {
-            return music;
-        }
-
         public InstrumentalMusic buildInstrumentalMusic(){
             createInstrumentalMusic();
             buildTitle();
             buildDuration();
             buildGenre();
             buildMusicInstruments();
-            return getInstrumentalMusic();
+            return music;
         }
     }
 }

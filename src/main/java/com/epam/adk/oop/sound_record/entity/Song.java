@@ -19,7 +19,6 @@ public class Song extends Track {
     }
 
     public Song() {
-        super();
     }
 
     public String getTextAuthor() {
@@ -61,17 +60,13 @@ public class Song extends Track {
             song.setTextAuthor("Unknown");
         }
 
-        private Song getSong() {
-            return song;
-        }
-
         public Song buildSong(){
             createSong();
             buildTitle();
             buildDuration();
             buildGenre();
             buildTextAuthor();
-            return getSong();
+            return song;
         }
     }
 }
