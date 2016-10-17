@@ -14,11 +14,6 @@ public class InstrumentalMusic extends Track {
 
     private ArrayList<MusicInstrument> instruments;
 
-    public InstrumentalMusic(String title, int duration, Genre genre, ArrayList<MusicInstrument> instruments) {
-        super(title, duration, genre);
-        this.instruments = instruments;
-    }
-
     public InstrumentalMusic() {
     }
 
@@ -32,7 +27,7 @@ public class InstrumentalMusic extends Track {
      *
      * @author Kaikenov Adilhan.
      */
-    public enum MusicInstrument {
+    private enum MusicInstrument {
 
         SAXOPHONE("Saxophone"),
         PIANO("Piano"),
@@ -61,16 +56,16 @@ public class InstrumentalMusic extends Track {
             music = new InstrumentalMusic();
         }
 
-        void buildTitle(){
+        private void buildTitle(){
             music.setTitle("Instrumental Music title");
         }
 
 
-        void buildDuration(){
+        private void buildDuration(){
             music.setDuration(random.nextInt(180) + 120);
         }
 
-        void buildGenre(){
+        private void buildGenre(){
             String[] genres = genreValues.split(SIGN_TO_SPLIT);
             int index = random.nextInt(genres.length);
             music.setGenre(Track.Genre.valueOf(genres[index]));
@@ -90,6 +85,11 @@ public class InstrumentalMusic extends Track {
             music.setInstruments(musicInstruments);
         }
 
+        /**
+         * The method for building InstrumentalMusic.
+         *
+         * @return new InstrumentalMusic.
+         */
         public InstrumentalMusic buildInstrumentalMusic(){
             createInstrumentalMusic();
             buildTitle();

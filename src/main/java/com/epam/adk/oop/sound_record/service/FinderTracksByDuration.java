@@ -25,7 +25,7 @@ public class FinderTracksByDuration {
      * @param minMinute the lower bound (minute) for the search.
      * @param maxMinute the upper bound (minute) for the search.
      * @param disk      disk with playlists.
-     * @return a list of the found songs.
+     * @return          a list of the found songs.
      */
     public ArrayList<Track> find(int minMinute, int maxMinute, Disk disk) {
 
@@ -58,5 +58,4 @@ public class FinderTracksByDuration {
         }
         return result;
     }
-
 }

@@ -15,12 +15,6 @@ public abstract class Track implements Component {
     private int duration;
     private Genre genre;
 
-    public Track(String title, int duration, Genre genre) {
-        this.title = title;
-        this.duration = duration;
-        this.genre = genre;
-    }
-
     public Track() {
     }
 
@@ -34,13 +28,6 @@ public abstract class Track implements Component {
         return genre;
     }
 
-    @Override
-    public String toString() {
-        return " - Song name: " + title +
-                "; Genre: " + genre.getName() +
-                "; Duration: " + getDuration() + ";";
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -51,6 +38,13 @@ public abstract class Track implements Component {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+
+    @Override
+    public String toString() {
+        return " - Song name: " + title +
+                "; Genre: " + genre.getName() +
+                "; Duration: " + getDuration() + ";";
     }
 
     /**

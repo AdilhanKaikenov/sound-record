@@ -32,11 +32,12 @@ public class Runner {
         Disk disk = new Disk();
         FinderTracksByDuration finder = new FinderTracksByDuration();
 
-        Album album = AlbumBuilder.buildAlbum();
+        AlbumBuilder builder = new AlbumBuilder();
+        Album album = builder.buildAlbum();
 
         disk.add(album);
 
-        Collections.sort(album.getComponents(), Album.BY_TRACK_GENRE);
+        Collections.sort(album.getComponents(), Album.SORTER_BY_TRACK_GENRE);
 
         log.info("Sorted disk: {}", disk);
 

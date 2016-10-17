@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * TODO: Использовать паттерн Builder, придумать как сделать лучше.
+ * TODO: сделать лучше
  *
  * Created by Kaikenov Adilhan on 12.10.2016.
  *
@@ -22,32 +22,48 @@ public class AlbumBuilder {
     private static final Logger log = LoggerFactory.getLogger(AlbumBuilder.class);
 
     private static Random random = new Random();
+    private Album album;
 
     private static final int MAX_TRACK_NUMBER = 7;
     private static final int MAX_PERFORMERS_NUMBER = 2;
     private static final int MIN_NUMBER = 1;
 
-    /**
-     * The method for creating Album randomly.
-     *
-     * @return new Album.
-     */
-    public static Album buildAlbum() {
-        ArrayList<Track> tracks = new ArrayList<>();
+    private void createNewAlbum(){
+        log.debug("Creating new Album...");
+        album = new Album();
+    }
+
+    private void buildPerformers(){
         ArrayList<Performer> performers = new ArrayList<>();
-        int trackNum = random.nextInt(MAX_TRACK_NUMBER - MIN_NUMBER) + MIN_NUMBER;
-        int performersNum = random.nextInt(MAX_PERFORMERS_NUMBER - MIN_NUMBER) + MIN_NUMBER;
-        log.debug("Entering buildAlbum(Number: songs = {}, instr.musics = {}, performers = {})",
-                trackNum, trackNum, performersNum);
+        int performersNum = random.nextInt(MAX_PERFORMERS_NUMBER) + MIN_NUMBER;
         for (int i = 0; i < performersNum; i++) {
-            performers.add(new Performer("SingerName", "SingerLastName_" + i));
+            performers.add(new Performer("Name", "Surname_" + i));
         }
+        log.debug("Number of performers = {}", performers.size());
+        album.setPerformers(performers);
+    }
+
+    private void buildTracks(){
+        ArrayList<Track> tracks = new ArrayList<>();
+        int trackNum = random.nextInt(MAX_TRACK_NUMBER - MIN_NUMBER) + MIN_NUMBER;
         ArrayList<Track> songs = createSongs(trackNum);
         ArrayList<Track> instrumentalMusics = createInstrumentalMusics(trackNum);
         tracks.addAll(songs);
         tracks.addAll(instrumentalMusics);
-        log.debug("Creating Album. Parameters: performers number = {}, tracks number = {}", performers.size(), tracks.size());
-        return new Album(performers, tracks);
+        log.debug("Number of tracks = {}", tracks.size());
+        album.setComponents(tracks);
+    }
+
+    /**
+     * The method for building Album randomly.
+     *
+     * @return new Album.
+     */
+    public Album buildAlbum() {
+        createNewAlbum();
+        buildPerformers();
+        buildTracks();
+        return album;
     }
 
     /**

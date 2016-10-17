@@ -18,16 +18,10 @@ public class Album extends AbstractComposite<Track> implements Component {
 
     private static final Logger log = LoggerFactory.getLogger(Album.class);
 
-    public static final Comparator<Track> BY_TRACK_GENRE = new SorterByTrackGenre();
+    public static final Comparator<Track> SORTER_BY_TRACK_GENRE = new SorterByTrackGenre();
     private ArrayList<Performer> performers;
 
-    public Album(ArrayList<Performer> performers, List<Track> components) {
-        super(components);
-        this.performers = performers;
-    }
-
-    public Album(ArrayList<Performer> performers) {
-        this.performers = performers;
+    public Album() {
     }
 
     /**
@@ -41,6 +35,10 @@ public class Album extends AbstractComposite<Track> implements Component {
             sb.append(performer).append("; ");
         }
         return sb.toString();
+    }
+
+    public void setPerformers(ArrayList<Performer> performers) {
+        this.performers = performers;
     }
 
     public static void printTracks(List<Track> tracks){

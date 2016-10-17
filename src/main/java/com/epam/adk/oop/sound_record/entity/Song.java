@@ -13,11 +13,6 @@ public class Song extends Track {
 
     private String textAuthor;
 
-    public Song(String title, int duration, Genre genre, String textAuthor) {
-        super(title, duration, genre);
-        this.textAuthor = textAuthor;
-    }
-
     public Song() {
     }
 
@@ -39,15 +34,15 @@ public class Song extends Track {
             song = new Song();
         }
 
-        void buildTitle(){
+        private void buildTitle(){
             song.setTitle("Song title");
         }
 
-        void buildDuration(){
+        private void buildDuration(){
             song.setDuration(random.nextInt(180) + 120);
         }
 
-        void buildGenre(){
+        private void buildGenre(){
             String[] genres = genreValues.split(SIGN_TO_SPLIT);
             int index = random.nextInt(genres.length);
             song.setGenre(Track.Genre.valueOf(genres[index]));
@@ -57,6 +52,11 @@ public class Song extends Track {
             song.setTextAuthor("Unknown");
         }
 
+        /**
+         * The method for building Song.
+         *
+         * @return new Song.
+         */
         public Song buildSong(){
             createSong();
             buildTitle();

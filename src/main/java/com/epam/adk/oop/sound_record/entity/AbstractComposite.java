@@ -23,10 +23,6 @@ public abstract class AbstractComposite<T extends Component> {
         components = new ArrayList<>();
     }
 
-    public AbstractComposite(List<T> components) {
-        this.components = components;
-    }
-
     public void add(T composite) {
         if (composite == null) {
             log.error("Error in {} class, add() method. Argument = null", super.getClass().getSimpleName());
@@ -48,6 +44,10 @@ public abstract class AbstractComposite<T extends Component> {
         }
         SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
         return sdf.format(new Date(total * 1000));
+    }
+
+    public void setComponents(List<T> components) {
+        this.components = components;
     }
 
     @Override
