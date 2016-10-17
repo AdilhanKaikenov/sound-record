@@ -21,8 +21,8 @@ public class AlbumBuilder {
 
     private static final Logger log = LoggerFactory.getLogger(AlbumBuilder.class);
 
-    private static Random random = new Random();
     private Album album;
+    private static Random random = new Random();
 
     private static final int MAX_TRACK_NUMBER = 7;
     private static final int MAX_PERFORMERS_NUMBER = 2;
@@ -89,8 +89,8 @@ public class AlbumBuilder {
      * @return the number of instrumental music randomly created.
      */
     private static ArrayList<Track> createInstrumentalMusics(int number) {
-        InstrumentalMusicBuilder builder = new InstrumentalMusicBuilder();
         log.debug("Entering createInstrumentalMusics(number = {})", number);
+        InstrumentalMusicBuilder builder = new InstrumentalMusicBuilder();
         ArrayList<Track> instrumentalMusics = new ArrayList<>(number);
         for (int i = 0; i < number; i++) {
             instrumentalMusics.add(builder.buildInstrumentalMusic());

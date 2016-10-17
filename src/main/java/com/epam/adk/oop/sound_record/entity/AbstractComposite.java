@@ -32,7 +32,7 @@ public abstract class AbstractComposite<T extends Component> {
     }
 
     public List<T> getComponents() {
-        return components;
+        return new ArrayList<>(components);
     }
 
     public String getDuration() {
