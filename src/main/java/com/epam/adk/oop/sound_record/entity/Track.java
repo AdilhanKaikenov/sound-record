@@ -47,6 +47,27 @@ public abstract class Track implements Component {
                 "; Duration: " + getDuration() + ";";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Track track = (Track) o;
+
+        if (duration != track.duration) return false;
+        if (title != null ? !title.equals(track.title) : track.title != null) return false;
+        return genre == track.genre;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = title != null ? title.hashCode() : 0;
+        result = 31 * result + duration;
+        result = 31 * result + (genre != null ? genre.hashCode() : 0);
+        return result;
+    }
+
     /**
      * Created by Kaikenov Adilhan on 11.10.2016.
      * Enumeration of Music genres.

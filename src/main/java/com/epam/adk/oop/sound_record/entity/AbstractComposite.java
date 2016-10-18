@@ -60,4 +60,20 @@ public abstract class AbstractComposite<T extends Component> {
         }
         return sb.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AbstractComposite<?> that = (AbstractComposite<?>) o;
+
+        return components != null ? components.equals(that.components) : that.components == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return components != null ? components.hashCode() : 0;
+    }
 }
