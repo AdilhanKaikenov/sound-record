@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * TODO: сделать лучше
- *
  * Created by Kaikenov Adilhan on 12.10.2016.
  *
  * @author Kaikenov Adilhan.

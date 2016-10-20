@@ -23,12 +23,12 @@ public abstract class AbstractComposite<T extends Component> {
         components = new ArrayList<>();
     }
 
-    public void add(T composite) {
+    public boolean add(T composite) {
         if (composite == null) {
             log.error("Error in {} class, add() method. Argument = null", super.getClass().getSimpleName());
             throw new NullPointerException();
         }
-        components.add(composite);
+        return components.add(composite);
     }
 
     public List<T> getComponents() {
