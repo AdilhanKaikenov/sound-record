@@ -27,7 +27,7 @@ public class FinderTracksByDuration {
      * @param disk      disk with playlists.
      * @return          a list of the found songs.
      */
-    public ArrayList<Track> find(int minMinute, int maxMinute, Disk disk) {
+    public List<Track> find(int minMinute, int maxMinute, Disk disk) {
 
         log.debug("Min. minute = {}, Max. minute = {}", minMinute, maxMinute);
         if (minMinute > maxMinute) {
@@ -38,7 +38,7 @@ public class FinderTracksByDuration {
             log.error("Error in FinderTracksByDuration class, find() method. Argument = null");
             throw new NullPointerException();
         }
-        ArrayList<Track> result = new ArrayList<>();
+        List<Track> result = new ArrayList<>();
         List<Album> albums = disk.getComponents();
 
         for (Album album : albums) {

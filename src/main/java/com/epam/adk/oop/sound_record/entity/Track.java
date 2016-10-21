@@ -15,7 +15,7 @@ public abstract class Track implements Component {
     private int duration;
     private Genre genre;
 
-    public Track() {
+    protected Track() {
     }
 
     @Override
@@ -28,15 +28,15 @@ public abstract class Track implements Component {
         return genre;
     }
 
-    public void setTitle(String title) {
+    protected void setTitle(String title) {
         this.title = title;
     }
 
-    public void setDuration(int duration) {
+    protected void setDuration(int duration) {
         this.duration = duration;
     }
 
-    public void setGenre(Genre genre) {
+    protected void setGenre(Genre genre) {
         this.genre = genre;
     }
 

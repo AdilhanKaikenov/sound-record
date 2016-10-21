@@ -3,13 +3,14 @@ package com.epam.adk.oop.sound_record.main;
 import com.epam.adk.oop.sound_record.entity.Album;
 import com.epam.adk.oop.sound_record.entity.Disk;
 import com.epam.adk.oop.sound_record.entity.Track;
-import com.epam.adk.oop.sound_record.builder.AlbumBuilder;
 import com.epam.adk.oop.sound_record.service.FinderTracksByDuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+
+import static com.epam.adk.oop.sound_record.entity.Album.Builder;
 
 /**
  * Created by Kaikenov Adilhan on 11.10.2016.
@@ -32,7 +33,7 @@ public class Runner {
         Disk disk = new Disk();
         FinderTracksByDuration finder = new FinderTracksByDuration();
 
-        AlbumBuilder builder = new AlbumBuilder();
+        Builder builder = new Builder();
         Album album = builder.buildAlbum();
 
         disk.add(album);
@@ -42,7 +43,7 @@ public class Runner {
         log.info("Sorted disk: {}", disk);
 
         log.info("Search result: ");
-        ArrayList<Track> found = finder.find(3, 3, disk);
+        List<Track> found = finder.find(3, 3, disk);
         Album.printTracks(found);
 
     }

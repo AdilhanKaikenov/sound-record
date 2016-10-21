@@ -13,10 +13,10 @@ public class Song extends Track {
 
     private String textAuthor;
 
-    public Song() {
+    private Song() {
     }
 
-    public void setTextAuthor(String textAuthor) {
+    private void setTextAuthor(String textAuthor) {
         this.textAuthor = textAuthor;
     }
 

@@ -3,6 +3,7 @@ package com.epam.adk.oop.sound_record.entity;
 import com.epam.adk.oop.sound_record.service.PropertyManager;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -12,12 +13,12 @@ import java.util.Random;
  */
 public class InstrumentalMusic extends Track {
 
-    private ArrayList<MusicInstrument> instruments;
+    private List<MusicInstrument> instruments;
 
-    public InstrumentalMusic() {
+    private InstrumentalMusic() {
     }
 
-    public void setInstruments(ArrayList<MusicInstrument> instruments) {
+    private void setInstruments(List<MusicInstrument> instruments) {
         this.instruments = instruments;
     }
 
@@ -77,7 +78,7 @@ public class InstrumentalMusic extends Track {
             if (number == 0) {
                 number++;
             }
-            ArrayList<MusicInstrument> musicInstruments = new ArrayList<>(number);
+            List<MusicInstrument> musicInstruments = new ArrayList<>(number);
             for (int i = 0; i < number; i++) {
                 int index = random.nextInt(instruments.length);
                 musicInstruments.add(MusicInstrument.valueOf(instruments[index]));

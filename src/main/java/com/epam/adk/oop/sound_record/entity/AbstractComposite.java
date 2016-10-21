@@ -19,16 +19,16 @@ public abstract class AbstractComposite<T extends Component> {
 
     private List<T> components;
 
-    public AbstractComposite() {
+    protected AbstractComposite() {
         components = new ArrayList<>();
     }
 
-    public void add(T composite) {
+    public boolean add(T composite) {
         if (composite == null) {
             log.error("Error in {} class, add() method. Argument = null", super.getClass().getSimpleName());
             throw new NullPointerException();
         }
-        components.add(composite);
+        return components.add(composite);
     }
 
     public List<T> getComponents() {
@@ -46,7 +46,7 @@ public abstract class AbstractComposite<T extends Component> {
         return sdf.format(new Date(total * 1000));
     }
 
-    public void setComponents(List<T> components) {
+    protected void setComponents(List<T> components) {
         this.components = components;
     }
 
